@@ -34,6 +34,17 @@ def sum_across_rows(grid):
             total += grid[y, x]
     return total
 
+def copy_pattern(grid, pattern, y_padding, x_padding):
+
+    if grid.shape[0] < pattern.shape[0] + y_padding or grid.shape[1] < pattern.shape[1] + x_padding:
+        exit("INVALID PATTERN SIZE.")
+
+    for y, row in enumerate(pattern):
+        for x, val in enumerate(row):
+            grid[y + y_padding, x + x_padding] = val
+
+    return grid
+
 
 def update(surface, cur, sz):
     nxt = np.zeros((cur.shape[0], cur.shape[1]))
@@ -63,9 +74,13 @@ def init(x_dim, y_dim):
 
     cells = np.zeros((y_dim, x_dim))
     pattern = np.array(parse_data(sys.argv[1]));
-    pos = (10,14)
-    cells[pos[0]:pos[0]+pattern.shape[0], pos[1]:pos[1]+pattern.shape[1]] = pattern
-    return cells
+
+    if len(sys.argv) == 4 and sys.argv[2].isdigit() and sys.argv[3].isdigit():
+        y_padding, x_padding = int(sys.argv[2]), int(sys.argv[3])
+    else:
+        y_padding, x_padding = 0, 0
+
+    return copy_pattern(cells, pattern, y_padding, x_padding)
 
 def main(x_dim, y_dim, cellsize):
     pygame.init()
