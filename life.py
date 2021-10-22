@@ -5,9 +5,9 @@ import sys
 #
 # Setup the colors
 #
-COLOR_ABOUT_TO_DIE = (155, 155, 155)
-COLOR_ALIVE = (255, 255, 255)
-COLOR_BACKGROUND = (0, 0, 0)
+COLOR_ABOUT_TO_DIE = (232, 74, 50)
+COLOR_ALIVE = (232, 74, 39)
+COLOR_BACKGROUND = (19, 41, 75)
 COLOR_GRID = (30, 30, 60)
 
 def parse_data(fp):
@@ -100,4 +100,4 @@ def main(x_dim, y_dim, cellsize):
         pygame.display.update()
 
 if __name__ == "__main__":
-    main(120, 90, 8)
+    main(90, 90, 10)
