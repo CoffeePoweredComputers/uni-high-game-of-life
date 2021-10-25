@@ -12,58 +12,53 @@ COLOR_GRID = (30, 30, 60)
 
 def parse_data(fp):
     """
-    Parse the glider patterns from the project directory into a list 
-    of lists where each sublist is a list of integers that are either
-    1 (alive cell) or 0 (dead cell).
+    Parse the glider patterns from the project directory into a list of lists
+    where each sublist is a list of integers that are either 1 (alive cell) or
+    0 (dead cell).
 
     Arguments:
         fp (string) -> The path to the glider pattern that the user type
                        in from sys.argv[1]
     """
-
-    with open(fp) as fin:
-        data = [ list(map(int, x.split(","))) for x in fin.readlines()]
-    return data
+    pass
 
 
 def sum_across_rows(grid):
+    """
+    Takes a 2d numpy array and returnsthe sum of value across all subarrays.
 
-    total = 0
-    for y in range(grid.shape[0]):
-        for x in range(grid.shape[1]):
-            total += grid[y, x]
-    return total
+    Arguments:
+        grid (np.array) -> The 2d array.
+    """
+    pass
+
 
 def copy_pattern(grid, pattern, y_padding, x_padding):
-
-    if grid.shape[0] < pattern.shape[0] + y_padding or grid.shape[1] < pattern.shape[1] + x_padding:
-        exit("INVALID PATTERN SIZE.")
-
-    for y, row in enumerate(pattern):
-        for x, val in enumerate(row):
-            grid[y + y_padding, x + x_padding] = val
-
-    return grid
+    """
+    Takes a pattern and copies that pattern onto the grid
+    with some amount of padding.
+    """
 
 
-def update(surface, cur, sz):
-    nxt = np.zeros((cur.shape[0], cur.shape[1]))
+    #Step 1: Check if the pattern + padding will fit on the grid
 
-    for r in range(cur.shape[0]):
-        for c in range(cur.shape[1]):
+    #Step 2: Iterate over the pattern and copy it onto the grid
+
+    pass
+
+def update(surface, curr_grid, cell_size):
+
+    # We start off with a new grid which is what we will be updating
+    new_grid = np.zeros((cur.shape[0], cur.shape[1]))
+
+    for y in range(curr_grid.shape[0]):
+        for x in range(curr_grid.shape[1]):
+
+            # Implement the game of life using the rules
     
-            num_alive = sum_across_rows(cur[r-1:r+2, c-1:c+2]) - cur[r, c]
+            pygame.draw.rect(surface, color, (x*cell_size, y*cell_size, cell_size-1, -1))
 
-            if cur[r, c] == 1 and num_alive < 2 or num_alive > 3:
-                color = COLOR_ABOUT_TO_DIE
-            elif (cur[r, c] == 1 and 2 <= num_alive <= 3) or (cur[r, c] == 0 and num_alive == 3):
-                nxt[r, c] = 1
-                color = COLOR_ALIVE
-
-            color = color if cur[r, c] == 1 else COLOR_BACKGROUND
-            pygame.draw.rect(surface, color, (c*sz, r*sz, sz-1, sz-1))
-
-    return nxt
+    return new_grid
 
 def init(x_dim, y_dim):
     """
@@ -72,17 +67,23 @@ def init(x_dim, y_dim):
     then it defaults to a randomized starting pattern.
     """
 
-    cells = np.zeros((y_dim, x_dim))
-    pattern = np.array(parse_data(sys.argv[1]));
+    #Step 1) 
+    grid = #create a numpy grid of zeroes of with the dimensions inthe parameters
+    pattern = #parse the pattern given by the user via sys.argv
 
-    if len(sys.argv) == 4 and sys.argv[2].isdigit() and sys.argv[3].isdigit():
-        y_padding, x_padding = int(sys.argv[2]), int(sys.argv[3])
-    else:
-        y_padding, x_padding = 0, 0
+    # Step 2) Validate and read in the padding arguments if the user passes them in
+    # otherwise default to zero 
 
-    return copy_pattern(cells, pattern, y_padding, x_padding)
+    # Step 3) Copy the pattern onto the grid
+
+    # Step 4) Return the result
+
+    pass
 
 def main(x_dim, y_dim, cellsize):
+    """
+    This just gets the game going. No need to modify anything here.
+    """
     pygame.init()
     surface = pygame.display.set_mode((x_dim * cellsize, y_dim * cellsize))
     pygame.display.set_caption("John Conway's Game of Life")
@@ -93,7 +94,7 @@ def main(x_dim, y_dim, cellsize):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
-                return
+                exit("Life has finished...")
 
         surface.fill(COLOR_GRID)
         cells = update(surface, cells, cellsize)
