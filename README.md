@@ -1,6 +1,6 @@
 ## Checkpoints
 
-#### Checkpoint 1:
+#### Checkpoint 1 (Due Monday, Nov 1):
 
 * First make sure all the TODO comments in the `life.py` file correctly use the defined `sys.argv` arguments.
 * `parse_data`: Implement the parse data function such that it reads a csv file into a list of lists where each sublist contains integer values. These values will be either 1 or 0 to indicate whether a dead or alive cell is at that location. The data function will read the file given by the second argument of `sys.argv` when the program is run.
@@ -10,14 +10,14 @@
   * Iterate over the pattern one cell at a time and copy the value from that cell to the same location on the grid plus the x and the y padding.
 
 
-#### Checkpoint 2:
+#### Checkpoint 2 (Due Monday, Nov 8):
 * `copy_pattern`: If you did not finish this function in the last checkpoint it should be finished in this checkpoint.
 * `update`: This is the heart of operation. Conways game of life is a rule based game where, with each update, we look at the value of each cell in the grid and:
- * Any life cell with fewer than two live neighbors dies, as if by underpopulation.
- * Any live cell with two or three live neighors lives on to the next generation
- * Any live cell with more than three live neighbors dies, as if by overpopulation.
- * Any dead cell with eactly three live neighbors becomes a live cell, as if by reproduction.
- Complete this function so that for every update, each cell is examined and updated based on these rules.
+ * Any life cell with fewer than two live neighbors dies, as if by underpopulation. Keep the cell in the new grid we're making 0 and update the color to be about to die.
+ * Any live cell with two or three live neighors lives on to the next generation. Update the cell in the new grid to be 1 and update the color to be alive.
+ * Any live cell with more than three live neighbors dies, as if by overpopulation. Keep the cell in the new grid  and update the color to be about to die.
+ * Any dead cell with eactly three live neighbors becomes a live cell, as if by reproduction. Update the cell in the new grid to be 1 and update the color to be alive.
+ Complete this function so that for every update, each cell is examined and updated based on these rules. 
 * There are some tuples declared at the top of the `life.py` file. Modify these to make a color scheme of your own choosing.
 * Create a new pattern called `mylife.csv` and place it in the `data/` directory.
 
@@ -34,7 +34,8 @@
 * 30 Points - Participation
 * 10 Points - `parse_data`
 * 10 Points - `sum_across_rows`
-* 15 Points - `copy_pattern`
+* 5 Points - `copy_pattern` started by checkpoint 1
+* 10 Points - `copy_pattern` completed by checkpoint 2
 * 25 Points - `update`
 * 5 Points - Change color scheme
 * 5 Points - Produce pattern
