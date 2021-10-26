@@ -2,7 +2,6 @@
 
 #### Checkpoint 1 (Due Monday, Nov 1):
 
-* First make sure all the TODO comments in the `life.py` file correctly use the defined `sys.argv` arguments.
 * `parse_data`: Implement the parse data function such that it reads a csv file into a list of lists where each sublist contains integer values. These values will be either 1 or 0 to indicate whether a dead or alive cell is at that location. The data function will read the file given by the second argument of `sys.argv` when the program is run.
 * `sum_across_rows`: For the later logic of the game of life we will need to determine how many cells in a given subsection are alive. This function should take a numpy array, sum all of the alive cells, then return the total. Recall the sum/total pattern for this exercise and adapt it for a 2d array.
 * `copy_pattern`: This is the trickeiest function in this lab and will likely require the most time. As such we only expect that you will have *started* this function by the end of the first checkpoint. This function takes four arguments: (1) a numpy array of the pattern we want to render as read-in from parse_data and (2) the full grid onto which we want to place our pattern, (3) the amount of room we want between the st of the pattern and the border of the grid on the top, and (4) the same as 3 but between the pattern and the left side of the grid. You will:
