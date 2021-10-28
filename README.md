@@ -20,6 +20,10 @@
 * There are some tuples declared at the top of the `life.py` file. Modify these to make a color scheme of your own choosing.
 * Create a new pattern called `mylife.csv` and place it in the `data/` directory.
 
+## Running the program
+The program will be run in one of the two following ways
+* `python life.py <path/to/pattern.csv>`: In this version the user only provides the file and the padding along the x and y axis should be set to default to 0.
+* `python life.py <path/to/pattern.csv> <y-pad> <x-pad>`: In this version, the user not only provides the pattern, but also provides the amount of padding they want between the start of the pattern and the y and x axis of the grid.
 
 ## Further Information:
 * [Wikipedia Description:](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
