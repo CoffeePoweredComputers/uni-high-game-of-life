@@ -11,12 +11,37 @@
 
 #### Checkpoint 2 (Due Monday, Nov 8):
 * `copy_pattern`: If you did not finish this function in the last checkpoint it should be finished in this checkpoint.
+* `init`: Please follow the instructions in the file itself. Here's an exanded template that you might find useful
+  ```python
+  # Step 1
+  grid = #use numpy zeros to create a grid of zeroes that is y_dim by x_dim sized
+  pattern = #pass your parse data function sys.argv[1] to get the file as a np.array()
+
+  # Step 2
+  #Check to make sure that the size of the pattern plus it's padding on both dimensions
+  #is small enough to fit on the background. If not exit.
+
+  # Step 3/4
+  # Copy the pattern onto the grid using your copy pattern function and return the resulting grid
+  ```
 * `update`: This is the heart of operation. Conways game of life is a rule based game where, with each update, we look at the value of each cell in the grid and:
   * Any life cell with fewer than two live neighbors dies, as if by underpopulation. Keep the cell in the new grid we're making 0 and update the color to be about to die.
   * Any live cell with two or three live neighors lives on to the next generation. Update the cell in the new grid to be 1 and update the color to be alive.
   * Any live cell with more than three live neighbors dies, as if by overpopulation. Keep the cell in the new grid  and update the color to be about to die.
   * Any dead cell with eactly three live neighbors becomes a live cell, as if by reproduction. Update the cell in the new grid to be 1 and update the color to be alive.
   Complete this function so that for every update, each cell is examined and updated based on these rules. 
+  ```python3
+  if #die by under popuation:
+     color = #set the color so that the cell looks like it's about to die
+  elif #die by over population
+     color = #again, set the color so that the cell looks like it's about to die
+  elif #become alive due to voverpopulation
+     #set cell in same location on the new grid to 1
+     #set the color to make it appear alive
+  else:
+     #set color to be background
+  ```
+
 * There are some tuples declared at the top of the `life.py` file. Modify these to make a color scheme of your own choosing.
 * Create a new pattern called `mylife.csv` and place it in the `data/` directory.
 
